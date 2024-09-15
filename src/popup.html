@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeetCode Stats</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    /* General Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #000000, #121212); /* Black gradient */
+      color: #ffd60a; /* Yellow text color */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #1a1a1a; /* Dark black background for container */
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+    }
+
+    h1 {
+      font-size: 2rem; /* Reduced font size */
+      font-weight: 600;
+      color: #ffd60a; /* Bright yellow for title */
+      text-align: center;
+      margin-bottom: 20px; /* Reduced margin */
+    }
+
+    .input-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px; /* Reduced margin */
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 8px; /* Reduced padding */
+      border: 1px solid #ffd60a;
+      border-radius: 6px; /* Reduced border-radius */
+      background-color: #1f1f1f; /* Dark input background */
+      color: #ffd60a;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #ceb11f; /* Brighter yellow border on focus */
+      box-shadow: 0 0 4px rgba(255, 214, 10, 0.5); /* Yellow glow */
+    }
+
+    button {
+      padding: 8px 16px; /* Reduced padding */
+      border: none;
+      border-radius: 6px; /* Reduced border-radius */
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #ffd60a;
+      color: #121212; /* Black text */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ceb11f; /* Brighter yellow on hover */
+      box-shadow: 0 4px 12px rgba(255, 214, 10, 0.5); /* Yellow shadow on hover */
+    }
+
+    /* Dropdown styling */
+    .sort-options select {
+      padding: 8px; /* Reduced padding */
+      border-radius: 6px; /* Reduced border-radius */
+      background-color: #1f1f1f; /* Dark background for dropdown */
+      color: #ffd60a;
+      border: 1px solid #ffd60a;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sort-options select:focus {
+      border-color: #ceb11f;
+      box-shadow: 0 0 4px rgba(255, 214, 10, 0.5);
+    }
+
+    /* Modern Table Styling */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px; /* Space between rows */
+      margin-top: 10px; /* Reduced margin */
+    }
+
+    table th, table td {
+      padding: 12px; /* Reduced padding */
+      font-size: 0.9rem; /* Reduced font size */
+      background-color: #1f1f1f; /* Dark background for cells */
+      color: #fff; /* Yellow text color */
+      border: none;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #ffd60a; /* Bright yellow for header */
+      color: #121212; /* Black text for header */
+    }
+
+    table tr {
+      border-radius: 8px; /* Rounded corners for rows */
+      overflow: hidden; /* Hide overflow to apply border-radius properly */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for each row */
+      transition: transform 0.3s ease;
+    }
+
+    table tr:hover {
+      transform: translateY(-2px); /* Slight lift effect on hover */
+    }
+
+    /* Text Color for Difficulty Levels */
+    .difficulty-all {
+      color: #a1a1a1; /* Neutral gray for 'All' */
+    }
+
+    .difficulty-easy {
+      color: #34d399; /* Green for 'Easy' */
+    }
+
+    .difficulty-medium {
+      color: #f97316; /* Orange for 'Medium' */
+    }
+
+    .difficulty-hard {
+      color: #ef4444; /* Red for 'Hard' */
+    }
+
+    .delete-btn {
+      background-color: #ef4444;
+      color: #000000;
+      border: none;
+      padding: 6px 10px; /* Reduced padding */
+      border-radius: 4px; /* Reduced border-radius */
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .delete-btn:hover {
+      background-color: #ff4f0a;
+      box-shadow: 0 4px 8px rgba(239, 68, 68, 0.4); /* Red shadow on hover */
+    }
+
+    /* Spinner styling */
+    #loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      display: none; /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Ensure it's on top of all other content */
+    }
+    #loading-spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3); /* Light semi-transparent border */
+      border-radius: 50%;
+      border-top: 4px solid #fff; /* White border on top */
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Custom Scrollbar Styles */
+   /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1f1f1f; /* Dark track */
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ffd60a; /* Yellow thumb */
+      border-radius: 10px;
+      border: 2px solid #1f1f1f; /* Dark border around thumb */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffd60a; /* Brighter yellow on hover */
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: #ffd60a #1f1f1f; /* Yellow thumb, dark track */
+
+ 
+    .top-right {
+      position: absolute;
+      top: 10px; /* Space from the top */
+      right: 10px; /* Space from the right */
+      color: #ffd60a;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem; /* Slightly smaller font size */
+    }
+
+    .top-right a {
+      color: #ffd60a;
+      margin-left: 10px; /* Space between icons */
+      transition: color 0.3s ease;
+    }
+
+    .top-right a:hover {
+      color: #ceb11f; /* Brighter yellow on hover */
+    }
+
+    .top-right img {
+      width: 24px; /* Size of the icons */
+      height: 24px;
+      vertical-align: middle; /* Align icons with text */
+      margin-left: 5px; /* Space between text and icons */
+    }
+  </style
+
+</head>
+<body>
+  
+  <div id="loading-overlay">
+    <div id="loading-spinner"></div>
+  </div>
+
+  
+  <div class="container">
+    <div class="top-right">
+      <span>Made by Himanshu Yadav</span>
+      <a href="https://github.com/bitsonymous" target="_blank" rel="noopener noreferrer">
+        <img src="github-11-128.png" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/himannshu-yadav/" target="_blank" rel="noopener noreferrer">
+        <img src="linkedin-6-256.png" alt="LinkedIn">
+      </a>
+    </div>
+    
+    <h1>LeetCode Buddies</h1>
+    <div class="input-container">
+      <input type="text" id="username" placeholder="Enter LeetCode username" />
+      <button id="fetch-rating">Add User</button>
+      <button id="refresh-btn" class="btn-refresh">Refresh Data</button>
+
+    </div>
+    
+    <div class="sort-options mb-4">
+      <label for="sort-select" class="mr-2">Sort by:</label>
+      <select id="sort-select" class="border rounded p-2">
+        <option value="username">Username</option>
+        <option value="rating">Rating</option>
+        <option value="questions.All">Total Questions</option>
+      </select>
+    </div>
+    <table class="table-auto w-full text-center">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Rating</th>
+          <th>All</th>
+          <th>Easy</th>
+          <th>Medium</th>
+          <th>Hard</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="storedData"></tbody>
+    </table>
+  </div>
+
+  
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "LeetCode Buddies",
+  "version": "1.0",
+  "description": "Fetch LeetCode user ratings and solved questions.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "https://leetcodeapi-v1.vercel.app/"],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
