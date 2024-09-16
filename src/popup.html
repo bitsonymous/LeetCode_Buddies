@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LeetCode Stats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -213,7 +215,25 @@
 
     scrollbar-width: thin;
     scrollbar-color: #ffd60a #1f1f1f; /* Yellow thumb, dark track */
-
+    .btn-primary {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #34d399; /* Green background for new button */
+      color: #121212; /* Black text */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #2a9d8f; /* Darker green on hover */
+      box-shadow: 0 4px 8px rgba(52, 211, 153, 0.5); /* Green shadow on hover */
+    }
+    
+    .mb-4 {
+      margin-bottom: 16px; /* Margin below the button */
+    }
  
     .top-right {
       position: absolute;
@@ -241,6 +261,58 @@
       vertical-align: middle; /* Align icons with text */
       margin-left: 5px; /* Space between text and icons */
     }
+    .button-container {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      margin-bottom: 16px; /* Space below the button */
+    }
+    
+    .btn-primary {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #34d399; /* Green background for new button */
+      color: #121212; /* Black text */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #2a9d8f; /* Darker green on hover */
+      box-shadow: 0 4px 8px rgba(52, 211, 153, 0.5); /* Green shadow on hover */
+    }
+    .button-container {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      margin-bottom: 16px; /* Space below the button */
+    }
+
+    .btn-calendar {
+      display: flex;
+      align-items: center; /* Center icon and text vertically */
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: #34d399; /* Green background for new button */
+      color: #121212; /* Black text */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-calendar i {
+      margin-right: 8px; /* Space between icon and text */
+    }
+
+    .btn-calendar:hover {
+      background-color: #2a9d8f; /* Darker green on hover */
+      box-shadow: 0 4px 8px rgba(52, 211, 153, 0.5); /* Green shadow on hover */
+    }
+
+    .container span{
+      font-weight: 800;
+    }
   </style
 
 </head>
@@ -262,6 +334,12 @@
     </div>
     
     <h1>LeetCode Buddies</h1>
+    <div class="button-container mb-4">
+      
+      <button id="go-to-calendar" class="btn-calendar">
+        <i class="fas fa-calendar-alt"></i> Go to Calendar
+      </button>
+    </div>
     <div class="input-container">
       <input type="text" id="username" placeholder="Enter LeetCode username" />
       <button id="fetch-rating">Add User</button>

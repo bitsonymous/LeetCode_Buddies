@@ -92,6 +92,7 @@ let currentSortField = 'username'; // Default sort field is 'username'
 let sortDirection = 'asc'; // Default sort direction is ascending
 
 // Function to sort data based on a field (username, rating, or questions)
+// Function to sort data based on a field (username, rating, or questions)
 function sortData(data, field, direction) {
   return data.sort((a, b) => {
     let valueA, valueB;
@@ -116,10 +117,18 @@ function sortData(data, field, direction) {
   });
 }
 
+
 // Function to handle sort changes from dropdown
-function handleSortChange(event) {
-  currentSortField = event.target.value; // Update sort field based on selection
-  loadSortedData(); // Reload the sorted data
+function handleSortChange(field) {
+  // Toggle sort direction if the same field is clicked again
+  if (currentSortField === field) {
+    sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+  } else {
+    currentSortField = field; // Set new sort field
+    sortDirection = 'asc'; // Reset to ascending
+  }
+
+  loadSortedData(); // Load the sorted data
 }
 
 // Function to load and display sorted data
@@ -228,13 +237,24 @@ document.getElementById('fetch-rating').addEventListener('click', async () => {
     alert(`Error fetching data: ${error.message}`);
   }
 });
-
+// Add sorting event listener to dropdown
+document.getElementById('sort-select').addEventListener('change', (event) => {
+  const selectedValue = event.target.value; // Get the selected value from dropdown
+  handleSortChange(selectedValue); // Handle sorting based on selected value
+});
 document.getElementById('refresh-btn').addEventListener('click', async () => {
   showLoadingSpinner(); // Show spinner when refresh starts
   await refreshAllData(); // Refresh data
   loadSortedData(); // Reload sorted data
   hideLoadingSpinner(); // Hide spinner when refresh is complete
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('go-to-calendar').addEventListener('click', () => {
+    window.location.href = "calender.html"; // Update this path if needed
+  });
+});
+
 
 // Load stored data and refresh when the extension is opened
 window.onload = async () => {
