@@ -1,4 +1,4 @@
-# <img src="source/icon.png" width="45" align="left"> LeetCode Buddies
+# <img src="src/icon.png" width="45" align="left"> LeetCode Buddies
 
 > Browser extension that allows you to compare LeetCode profiles and track upcoming coding contests from LeetCode, CodeChef, and Codeforces.
 
