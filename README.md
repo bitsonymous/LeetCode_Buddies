@@ -7,7 +7,10 @@
 1. Download the [latest release](https://github.com/bitsonymous/LeetCode_Buddies/releases).
 2. Unzip the downloaded file.
 
-I built this extension to simplify the comparison of LeetCode profiles and to keep track of upcoming contests across multiple platforms. 
+We built this extension to simplify the comparison of LeetCode profiles and to keep track of upcoming contests across multiple platforms. 
+
+
+## Supported Browsers:
 
 <p>
     <img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="48" alt="Chrome" valign="middle">
