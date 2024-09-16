@@ -11,7 +11,7 @@ body {
   background-color: #121212;
   color: #ffd60a;
   padding: 20px;
-  min-width: 550px;
+  min-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,58 +69,17 @@ ul#contestList {
 }
 
 .date-time-box {
-  background-color: #1a1a1a;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.contest-date {
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
-.contest-times {
-  font-size: 0.9rem;
-  color: #ffd60a; /* Yellow color for time range */
-}
-
-.platform-details {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  color: #ffd60a;
-}
-
-.platform-logo {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.contest-details {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-top: 10px;
-}
-
-.date-time-box {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background-color: #121212;
   color: #ffd60a;
   border-radius: 8px;
   padding: 10px;
   font-size: 0.9rem;
-  position: relative;
   margin-top: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Aligns date and time details */
+  align-items: center;
 }
 
 .date-time-box .contest-date {
@@ -143,65 +102,10 @@ ul#contestList {
   border-radius: 5px;
   font-size: 0.9rem;
   font-weight: 600;
-  margin-top: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.notify-button:hover {
-  background-color: #fbb03b;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-}
-.date-time-box {
-  display: flex;
-  height: 15vh;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #121212;
-  color: #ffd60a;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 0.9rem;
-  position: relative;
-  margin-top: 10px;
-  box-shadow: 0 4px 8px rgba(5, 4, 4, 0.5);
-  
-}
-
-.date-time-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  right: 29vh;
-}
-
-.date-time-box .contest-date {
-  font-size: 1rem;
-  color: #ffd60a;
-}
-
-.date-time-box .contest-times {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-top: 5px;
-}
-
-.notify-button {
-  display: inline-block;
-  background-color: #ffd60a;
-  color: #121212;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  left:40vh;
-  bottom: 12vh;
+  margin-left: auto; /* Moves button to the right */
 }
 
 .notify-button:hover {
