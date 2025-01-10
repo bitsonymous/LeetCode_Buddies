@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const leetcodeApiUrl = 'https://cp-contest-api.vercel.app/leetcode';
-  const codeforcesApiUrl = 'https://cp-contest-api.vercel.app/codeforces';
-  const codechefApiUrl = 'https://cp-contest-api.vercel.app/codechef';
+  const leetcodeApiUrl = 'https://flat-salad-0199.ploomberapp.io/leetcode';
+  const codeforcesApiUrl = 'https://flat-salad-0199.ploomberapp.io/codeforces';
+  const codechefApiUrl = 'https://flat-salad-0199.ploomberapp.io/codechef';
   const leetcodeBaseUrl = 'https://leetcode.com/contest';
   const codechefBaseUrl = 'https://www.codechef.com/contests';
   const contestListElement = document.getElementById('contestList');
