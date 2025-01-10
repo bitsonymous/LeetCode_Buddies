@@ -187,12 +187,12 @@ async function refreshAllData() {
 
   for (const user of storedData) {
     try {
-      const ratingResponse = await fetch(`https://leetcodeapi-v1.vercel.app/rating/${user.username}`);
+      const ratingResponse = await fetch(`https://withered-frost-9321.ploomberapp.io/rating/${user.username}`);
       if (!ratingResponse.ok) throw new Error('Failed to fetch rating');
       const ratingData = await ratingResponse.json();
       const roundedRating = Math.round(ratingData.rating); // Round rating to nearest integer
 
-      const questionsResponse = await fetch(`https://leetcodeapi-v1.vercel.app/questions/${user.username}`);
+      const questionsResponse = await fetch(`https://withered-frost-9321.ploomberapp.io/questions/${user.username}`);
       if (!questionsResponse.ok) throw new Error('Failed to fetch questions');
       const questionsData = await questionsResponse.json();
 
@@ -217,12 +217,12 @@ document.getElementById('fetch-rating').addEventListener('click', async () => {
 
   // Fetch rating and questions for the new username
   try {
-    const ratingResponse = await fetch(`https://leetcodeapi-v1.vercel.app/rating/${username}`);
+    const ratingResponse = await fetch(`https://withered-frost-9321.ploomberapp.io/rating/${username}`);
     if (!ratingResponse.ok) throw new Error('Failed to fetch rating');
     const ratingData = await ratingResponse.json();
     const roundedRating = Math.round(ratingData.rating); // Round rating to nearest integer
 
-    const questionsResponse = await fetch(`https://leetcodeapi-v1.vercel.app/questions/${username}`);
+    const questionsResponse = await fetch(`https://withered-frost-9321.ploomberapp.io/questions/${username}`);
     if (!questionsResponse.ok) throw new Error('Failed to fetch questions');
     const questionsData = await questionsResponse.json();
 
